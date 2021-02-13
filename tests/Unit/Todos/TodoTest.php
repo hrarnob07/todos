@@ -24,12 +24,28 @@ class TodoTest extends TestCase
     {
 
         $data =[
-            ['title'=>'one'],
-            ['title' => 'two'],
+            'title'=>'one',
+            'status' => true,
             ];
-        $response = $this->repository->createOrUpdateIfNotExitDelete($data);
+        $response = $this->repository->store($data);
         
-        $this->assertTrue(true);
+        $this->assertNotEmpty(response);
+    }
+    /**
+     * To add to do list.
+     * @group testAddTodo
+     * @return void
+     */
+    public function testUpdate()
+    {
+
+        $data =[
+            'title'=>'one',
+            'status' => false,
+            ];
+        $response = $this->repository->update(1,$data);
+        
+        $this->assertNotEmpty(response);
     }
 
     /**
@@ -42,6 +58,55 @@ class TodoTest extends TestCase
 
         $response = $this->repository->all();
         $this->assertNotEmpty($response);
+    }
+    
+    /**
+     * get all to do list.
+     * @group testGetActive
+     * @return void
+     */
+    public function testGetActive()
+    {
+
+        $response = $this->repository->active();
+        $this->assertNotEmpty($response);
+    }
+
+    /**
+     * get all to do list.
+     * @group testGetCompleted
+     * @return void
+     */
+    public function testGetCompleted()
+    {
+
+        $response = $this->repository->completed();
+        $this->assertNotEmpty($response);
+    }
+    
+    /**
+     * get all to do list.
+     * @group testClearCompleted
+     * @return void
+     */
+    public function testClearCompleted()
+    {
+
+        $this->repository->clearCompleted();
+        
+        $this->assertTrue(true);
+    }
+    /**
+     * get all to do list.
+     * @group testDelete
+     * @return void
+     */
+    public function testDelete()
+    {
+
+        $this->repository->delete($id);
+        
+        $this->assertTrue(true);
     }
     
 }
