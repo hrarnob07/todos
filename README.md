@@ -20,6 +20,4 @@ php artisan serve
 
 <h1>Thanks </h1>
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+##Demo [video](https://drive.google.com/file/d/1fwQ7iFufX0P7By6dHbDoga0DA8JIyjjw/view?usp=sharing).
