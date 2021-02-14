@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Branch;
 
-use App\Model\Todo;
+use App\Models\Todo;
 use App\Repositories\TodosRepository;
 use Tests\TestCase;
 
@@ -29,7 +29,7 @@ class TodoTest extends TestCase
             ];
         $response = $this->repository->store($data);
         
-        $this->assertNotEmpty(response);
+        $this->assertNotEmpty($response);
     }
     /**
      * To add to do list.
@@ -43,7 +43,8 @@ class TodoTest extends TestCase
             'title'=>'one',
             'status' => false,
             ];
-        $response = $this->repository->update(1,$data);
+        $id = 1;    
+        $response = $this->repository->update($data,$id);
         
         $this->assertNotEmpty(response);
     }
@@ -103,7 +104,7 @@ class TodoTest extends TestCase
      */
     public function testDelete()
     {
-
+        $id = 1;
         $this->repository->delete($id);
         
         $this->assertTrue(true);
