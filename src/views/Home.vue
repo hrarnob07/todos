@@ -24,8 +24,8 @@
                   :key="index"
                 >
                   <td style="width:20px;">
-                     <v-icon v-if="item.status == true"  @click="toggleStatus(index,!item.status,item)" style="font-size:15px;">mdi-checkbox-blank-circle-outline</v-icon>
-                     <v-icon v-else  @click="toggleStatus(index,!item.status,item )" style="font-size:15px;color:green">mdi-check-circle-outline</v-icon>
+                     <v-icon v-if="item.status == true"  @click="toggleStatus(index,!item.status,item)" style="font-size:20px;">mdi-checkbox-blank-circle-outline</v-icon>
+                     <v-icon v-else  @click="toggleStatus(index,!item.status,item )" style="font-size:20px;color:green">mdi-check-circle-outline</v-icon>
                   </td>
                   <td @click="editableTrue(index, true)"> <p v-if="item.editable == false" :style="item.status == false ? 'text-decoration:line-through':'' "> {{ item.title }} </p>
                     <v-text-field v-if="item.editable === true" v-model="todos[index].title" @change="updateTodos(index, false,item)">
@@ -138,7 +138,13 @@ watch:{
     addTodos(value){
       if(value !="")
       {
-        this.ADD_TODOS({status: true,title: value})
+        let status = true;
+        if(this.activeTab == 2)
+        {
+          status = false;
+        }
+
+        this.ADD_TODOS({status: status,title: value})
         
         this.title = '';
       }

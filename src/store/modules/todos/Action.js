@@ -47,7 +47,9 @@ export default{
 		return new Promise((resolve, reject) => {
 			TodosApi.active().then(({data}) => {
 				console.log("data<<",data);
-                commit('SET_TODOS_ALL_DATA',data);
+				let allData = data.data;
+
+                commit('SET_TODOS_ALL_DATA',{data: allData, flag: true});
 
 				resolve(data);
 			}).catch(err => {

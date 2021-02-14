@@ -16,7 +16,11 @@ export default{
             allData.push(obj);
         });
         state.todos = allData;
-        state.showClearBtn = showClr;
+        if(data.flag != true)
+        {
+            state.showClearBtn = showClr;
+        }
+        
     },
     SET_ADD_TODOS:(state,data)=>{       
         let obj= {};
